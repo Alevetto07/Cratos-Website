@@ -9,10 +9,36 @@
   }
 
   const header = document.querySelector(".top");
+  const mobileNavMq = window.matchMedia("(max-width: 768px)");
+  let lastScrollY = window.scrollY;
+
   if (header) {
-    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const updateHeader = () => {
+      const y = window.scrollY;
+      header.classList.toggle("is-scrolled", y > 12);
+
+      if (mobileNavMq.matches) {
+        if (y < 64) {
+          header.classList.remove("is-hidden");
+        } else if (y > lastScrollY + 6) {
+          header.classList.add("is-hidden");
+        } else if (y < lastScrollY - 6) {
+          header.classList.remove("is-hidden");
+        }
+      } else {
+        header.classList.remove("is-hidden");
+      }
+
+      lastScrollY = y;
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    mobileNavMq.addEventListener("change", () => {
+      header.classList.remove("is-hidden");
+      lastScrollY = window.scrollY;
+      updateHeader();
+    });
   }
 
   const revealEls = document.querySelectorAll(".reveal, .divider--accent");
