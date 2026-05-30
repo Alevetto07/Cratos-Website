@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+.vercel
+*.log
+.env
+.env.*
+
+# Editor / OS
+.idea/
+.vscode/
+
+# Large source files (keep only assets/ copies)
+*.pdf
+!assets/docs/*.pdf

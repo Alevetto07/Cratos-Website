@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Team Cratos — CanSat ESERO Italia. Telemetria pressione e temperatura, missione VLF con quattro PCB custom."
+    />
+    <title>Cratos — CanSat ESERO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#doc">Vai al contenuto</a>
+
+    <header class="top">
+      <nav aria-label="Sezioni">
+        <a href="#overview">Panoramica</a>
+        <a href="#primaria">Primaria</a>
+        <a href="#secondaria">Secondaria</a>
+        <a href="#struttura">Struttura</a>
+        <a href="#alimentazione">Alimentazione</a>
+        <a href="#pcb">PCB</a>
+        <a href="#componenti">Componenti</a>
+        <a href="#dati">Dati</a>
+        <a href="#cdr">CDR</a>
+      </nav>
+    </header>
+
+    <article class="doc" id="doc">
+      <header class="intro" id="overview">
+        <div class="intro__hero">
+          <img
+            class="intro__logo"
+            src="assets/images/logo.png"
+            alt="Cratos — Can Radio AnTenna Observatory Sat"
+            width="320"
+            height="320"
+          />
+          <div class="intro__titles">
+            <h1>CanSat · ESERO Italia</h1>
+            <p class="meta text-reveal">
+              <span>Team Cratos</span>
+              <span>Liceo Scientifico Enrico Fermi · Padova</span>
+              <span>Formato lattina 66 × 115 mm</span>
+            </p>
+          </div>
+        </div>
+        <p class="text-reveal">
+          Documentazione del satellite in formato lattina: missione primaria (telemetria
+          atmosferica) e secondaria (spettroscopia VLF), quattro PCB circolari custom, antenna a
+          solenoide deployabile e pacchi batteria CR2450 sostituibili dal basamento.
+          Regolamento:
+          <a href="https://www.esero.it/cansat/">esero.it/cansat</a>.
+        </p>
+      </header>
+
+      <hr class="divider divider--accent" />
+
+      <section class="section-block reveal" id="primaria">
+        <h2 class="text-reveal">Missione primaria</h2>
+        <p class="text-reveal">
+          Requisito di gara: misurare <strong>pressione</strong> e <strong>temperatura</strong>
+          dell’aria e trasmetterle alla stazione di terra con frequenza minima di
+          <strong>1 campione al secondo</strong>.
+        </p>
+        <h3 class="text-reveal">Catena dati</h3>
+        <p class="chain text-reveal">
+          <strong>Sensore integrato</strong> → <strong>Arduino Nano 33 BLE</strong> →
+          <strong>APC220</strong> → <strong>Ricevitore a terra</strong> → GNU Octave
+        </p>
+        <ul>
+          <li class="text-reveal">MCU unica con BMP integrato — meno cablaggio e ingombro</li>
+          <li class="text-reveal">Downlink APC220 verso la ground station del team</li>
+          <li class="text-reveal">Firmware: campionamento, framing, invio periodico ≥ 1 Hz</li>
+        </ul>
+        <dl class="kv">
+          <dt class="text-reveal">MCU / sensori</dt>
+          <dd class="text-reveal">Arduino Nano 33 BLE</dd>
+          <dt class="text-reveal">Telemetria</dt>
+          <dd class="text-reveal">Modulo radio APC220</dd>
+          <dt class="text-reveal">Vincolo</dt>
+          <dd class="text-reveal">≥ 1 Hz per P e T fino al recupero del payload</dd>
+        </dl>
+
+        <details class="toggle">
+          <summary>Immagini hardware — missione primaria</summary>
+          <div class="toggle__body fig-gallery fig-gallery--2">
+            <figure class="figure">
+              <img
+                src="assets/images/arduino-nano-ble.png"
+                alt="Arduino Nano 33 BLE"
+                loading="lazy"
+              />
+              <span class="fig-label"><strong>Fig. 1</strong> Arduino Nano 33 BLE</span>
+            </figure>
+            <figure class="figure">
+              <img src="assets/images/apc220.png" alt="Modulo APC220" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 2</strong> APC220 · downlink</span>
+            </figure>
+          </div>
+        </details>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="section-block reveal" id="secondaria">
+        <h2 class="text-reveal">Missione secondaria</h2>
+        <p class="text-reveal">
+          Acquisizione di segnali elettromagnetici ambientali nella banda
+          <strong>10 kHz – 100 kHz</strong> (sotto la risonanza dell’antenna ~120 kHz). Obiettivo:
+          fenomeni come i <em>whistlers</em>. Segnale debole → catena analogica su 4 PCB → ADC
+          Teensy 4.1 → microSD → GNU Octave.
+        </p>
+        <h3 class="text-reveal">Catena segnale</h3>
+        <p class="chain text-reveal">
+          <strong>Antenna deployata</strong> → <strong>PCB1</strong> → <strong>PCB2</strong> →
+          <strong>PCB3</strong> → protezione → <strong>ADC Teensy</strong> → <strong>microSD</strong>
+        </p>
+        <h3 class="text-reveal">Antenna</h3>
+        <ul>
+          <li class="text-reveal">
+            Solenoide: <strong>200 m</strong> AWG30, <strong>100 avvolgimenti</strong>
+          </li>
+          <li class="text-reveal">Vano inferiore; deploy in volo con servomotore a quota target</li>
+          <li class="text-reveal">Logging binario su SD per throughput e integrità temporale</li>
+        </ul>
+        <dl class="kv">
+          <dt class="text-reveal">Acquisizione</dt>
+          <dd class="text-reveal">Teensy 4.1</dd>
+          <dt class="text-reveal">Memoria</dt>
+          <dd class="text-reveal">Modulo microSD 3,3 V + Kingston 32 GB</dd>
+          <dt class="text-reveal">Deploy</dt>
+          <dd class="text-reveal">Servomotore · meccanismo antenna</dd>
+        </dl>
+
+        <details class="toggle">
+          <summary>Immagini hardware — missione secondaria</summary>
+          <div class="toggle__body fig-gallery fig-gallery--3">
+            <figure class="figure">
+              <img src="assets/images/teensy-41.png" alt="Teensy 4.1" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 3</strong> Teensy 4.1</span>
+            </figure>
+            <figure class="figure">
+              <img src="assets/images/microsd.png" alt="Modulo microSD" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 4</strong> Logging su SD</span>
+            </figure>
+            <figure class="figure">
+              <img src="assets/images/servomotor.png" alt="Servomotore" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 5</strong> Attuatore deploy antenna</span>
+            </figure>
+          </div>
+        </details>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="section-block reveal" id="struttura">
+        <h2 class="text-reveal">Struttura e CAD</h2>
+        <p class="text-reveal">
+          Progetto meccanico in Fusion 360: vano superiore (paracadute / occhiello), stack PCB
+          centrale, basamento per alimentazione e deploy antenna. La sezione mostra quattro PCB,
+          doppio pacco batterie e il meccanismo superiore.
+        </p>
+
+        <details class="toggle" open>
+          <summary>Render CAD e sezione</summary>
+          <div class="toggle__body fig-gallery fig-gallery--3">
+            <figure class="figure">
+              <img src="assets/images/render-1.png" alt="Render CAD assonometrico" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 6</strong> Assonometria — shell e stack</span>
+            </figure>
+            <figure class="figure">
+              <img src="assets/images/render-2.png" alt="Render dal basso" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 7</strong> Basamento — geometria inferiore</span>
+            </figure>
+            <figure class="figure">
+              <img src="assets/images/section.png" alt="Sezione CAD" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 8</strong> Sezione — PCB, CR2450, vano antenna</span>
+            </figure>
+          </div>
+        </details>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="section-block reveal" id="alimentazione">
+        <h2 class="text-reveal">Alimentazione · batterie sostituibili</h2>
+        <p class="text-reveal">
+          Il regolamento richiede batterie facilmente sostituibili senza smontare tutto il
+          satellite. Cratos usa celle <strong>CR2450</strong> (3 V, 620 mAh) — niente LiPo per
+          vincoli di gara; buon compromesso capacità/volume.
+        </p>
+        <h3 class="text-reveal">Posizionamento</h3>
+        <p class="text-reveal">
+          Due <strong>moduli batteria</strong> simmetrici nel basamento (coppie di celle per
+          modulo), laterali allo stack PCB nella sezione, separati dal volume elettronico centrale.
+        </p>
+        <h3 class="text-reveal">Sostituzione dal fondo</h3>
+        <ul>
+          <li class="text-reveal">
+            <strong>Basamento aperto</strong> — inserti sinistra/destra rimovibili senza aprire il
+            corpo superiore
+          </li>
+          <li class="text-reveal">
+            <strong>Basamento chiuso</strong> — configurazione pre-volo con master switch, USB e
+            LED; le celle si cambiano estraendo gli inserti dal basso
+          </li>
+          <li class="text-reveal">
+            Procedura: spegnimento master → estrazione inserti → sostituzione CR2450 →
+            re-inserimento → controllo tensione
+          </li>
+        </ul>
+
+        <details class="toggle">
+          <summary>Viste CAD — batterie e basamento</summary>
+          <div class="toggle__body fig-gallery fig-gallery--3">
+            <figure class="figure">
+              <img
+                src="assets/images/batteries-cad.png"
+                alt="CAD batterie nel basamento"
+                loading="lazy"
+              />
+              <span class="fig-label"><strong>Fig. 9</strong> Vista laterale — pacchi batteria</span>
+            </figure>
+            <figure class="figure">
+              <img
+                src="assets/images/bottom-open.png"
+                alt="Basamento aperto"
+                loading="lazy"
+              />
+              <span class="fig-label"><strong>Fig. 10</strong> Basamento aperto — moduli estraibili</span>
+            </figure>
+            <figure class="figure">
+              <img
+                src="assets/images/bottom-closed.png"
+                alt="Basamento chiuso"
+                loading="lazy"
+              />
+              <span class="fig-label"><strong>Fig. 11</strong> Basamento chiuso — master, USB, LED</span>
+            </figure>
+          </div>
+        </details>
+        <p class="text-reveal">
+          <strong>PCB4</strong> distribuisce le rail ai sottosistemi; interruttori master sul
+          basamento (requisito ESERO).
+        </p>
+      </section>
+
+      <hr class="divider divider--accent" />
+
+      <section class="section-block reveal" id="pcb">
+        <h2 class="text-reveal">Architettura PCB (×4)</h2>
+        <p class="text-reveal">
+          Schede circolari per il diametro lattina. Flusso segnale VLF: PCB1 → PCB2 → PCB3;
+          alimentazione su PCB4 dedicata.
+        </p>
+
+        <details class="toggle">
+          <summary>Panoramica stack PCB</summary>
+          <div class="toggle__body fig-gallery fig-gallery--2">
+            <figure class="figure">
+              <img src="assets/images/pcb-side.png" alt="Stack PCB vista laterale" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 12</strong> Stack — vista laterale</span>
+            </figure>
+            <figure class="figure">
+              <img src="assets/images/pcb-stack.png" alt="Impilamento PCB" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 13</strong> Impilamento meccanico</span>
+            </figure>
+          </div>
+        </details>
+
+        <details class="toggle">
+          <summary>PCB1 — preamplificazione e passa-alto</summary>
+          <div class="toggle__body">
+            <p class="text-reveal">
+              Primo stadio: guadagno iniziale e passa-alto (ordine 2) sotto 10 kHz. Connettore
+              antenna in silkscreen.
+            </p>
+            <div class="fig-gallery fig-gallery--2">
+              <figure class="figure figure--layout">
+                <img src="assets/images/pcb-1.png" alt="Layout PCB1" loading="lazy" />
+                <span class="fig-label"><strong>Fig. 14a</strong> Layout</span>
+              </figure>
+              <figure class="figure">
+                <img src="assets/images/pcb-1-schematic.png" alt="Schema PCB1" loading="lazy" />
+                <span class="fig-label"><strong>Fig. 14b</strong> Schema</span>
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="toggle">
+          <summary>PCB2 — integrazione e passa-basso</summary>
+          <div class="toggle__body">
+            <p class="text-reveal">
+              Integratore (×10) e passa-basso ordine 5 fino a 100 kHz — anti-aliasing prima
+              dell’ADC.
+            </p>
+            <div class="fig-gallery fig-gallery--2">
+              <figure class="figure figure--layout">
+                <img src="assets/images/pcb-2.png" alt="Layout PCB2" loading="lazy" />
+                <span class="fig-label"><strong>Fig. 15a</strong> Layout</span>
+              </figure>
+              <figure class="figure">
+                <img src="assets/images/pcb-2-schematic.png" alt="Schema PCB2" loading="lazy" />
+                <span class="fig-label"><strong>Fig. 15b</strong> Schema</span>
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="toggle">
+          <summary>PCB3 — doppia amplificazione ×5</summary>
+          <div class="toggle__body">
+            <p class="text-reveal">Due stadi in cascata, 5× ciascuno (25× verso il convertitore).</p>
+            <div class="fig-gallery fig-gallery--2">
+              <figure class="figure figure--layout">
+                <img src="assets/images/pcb-3.png" alt="Layout PCB3" loading="lazy" />
+                <span class="fig-label"><strong>Fig. 16a</strong> Layout</span>
+              </figure>
+              <figure class="figure">
+                <img src="assets/images/pcb-3-schematic.png" alt="Schema PCB3" loading="lazy" />
+                <span class="fig-label"><strong>Fig. 16b</strong> Schema</span>
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="toggle">
+          <summary>PCB4 — distribuzione alimentazione</summary>
+          <div class="toggle__body">
+            <p class="text-reveal">
+              Rail DC per catena analogica, Teensy, Arduino e periferiche. Modulo TEL5-1211;
+              master switch sul basamento.
+            </p>
+            <div class="fig-gallery fig-gallery--2">
+              <figure class="figure figure--layout">
+                <img src="assets/images/pcb-4.png" alt="Layout PCB4" loading="lazy" />
+                <span class="fig-label"><strong>Fig. 17a</strong> Layout</span>
+              </figure>
+              <figure class="figure">
+                <img src="assets/images/pcb-4-schematic.png" alt="Schema PCB4" loading="lazy" />
+                <span class="fig-label"><strong>Fig. 17b</strong> Schema</span>
+              </figure>
+            </div>
+            <p class="placeholder text-reveal">
+              <strong>In arrivo:</strong> caratterizzazione da banco, curve di efficienza e note
+              di integrazione per PCB4.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="section-block reveal" id="componenti">
+        <h2 class="text-reveal">Mappa componenti</h2>
+        <details class="toggle" open>
+          <summary>Tabella componenti completa</summary>
+          <div class="toggle__body table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ruolo</th>
+                  <th>Componente</th>
+                  <th>Missione</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>MCU + BMP</td>
+                  <td>Arduino Nano 33 BLE</td>
+                  <td>Primaria</td>
+                </tr>
+                <tr>
+                  <td>Radio</td>
+                  <td>APC220</td>
+                  <td>Primaria</td>
+                </tr>
+                <tr>
+                  <td>MCU + ADC</td>
+                  <td>Teensy 4.1</td>
+                  <td>Secondaria</td>
+                </tr>
+                <tr>
+                  <td>Memoria</td>
+                  <td>microSD 3,3 V + 32 GB</td>
+                  <td>Secondaria</td>
+                </tr>
+                <tr>
+                  <td>Deploy</td>
+                  <td>Servomotore</td>
+                  <td>Secondaria</td>
+                </tr>
+                <tr>
+                  <td>Antenna</td>
+                  <td>200 m AWG30 × 100 spire</td>
+                  <td>Secondaria</td>
+                </tr>
+                <tr>
+                  <td>Condizionamento</td>
+                  <td>PCB1 – PCB3</td>
+                  <td>Secondaria</td>
+                </tr>
+                <tr>
+                  <td>Alimentazione</td>
+                  <td>PCB4 + CR2450</td>
+                  <td>Entrambe</td>
+                </tr>
+                <tr>
+                  <td>Sicurezza</td>
+                  <td>Master switch (basamento)</td>
+                  <td>Entrambe</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="section-block reveal" id="dati">
+        <h2 class="text-reveal">Validazione in laboratorio</h2>
+        <p class="text-reveal">
+          Test della catena VLF con generatore di funzioni, oscilloscopio e analisi FFT in GNU
+          Octave.
+        </p>
+        <details class="toggle">
+          <summary>Grafici — spettrogramma e PSD</summary>
+          <div class="toggle__body fig-gallery fig-gallery--2">
+            <figure class="figure">
+              <img
+                src="assets/images/spettrogramma.png"
+                alt="Spettrogramma tempo-frequenza"
+                loading="lazy"
+              />
+              <span class="fig-label"><strong>Fig. 18</strong> Analisi tempo-frequenza</span>
+            </figure>
+            <figure class="figure">
+              <img src="assets/images/fourier-psd.png" alt="Densità spettrale di potenza" loading="lazy" />
+              <span class="fig-label"><strong>Fig. 19</strong> PSD (dB/Hz)</span>
+            </figure>
+          </div>
+        </details>
+      </section>
+
+      <hr class="divider divider--accent" />
+
+      <section class="section-block reveal" id="cdr">
+        <h2 class="text-reveal">Documentazione</h2>
+        <p class="text-reveal">
+          Critical Design Review del team Cratos: architettura, test, conformità al regolamento e
+          budget.
+        </p>
+        <p class="text-reveal">
+          <a href="assets/docs/TeamCratos_CriticalDesignReview.pdf" download
+            >Scarica TeamCratos_CriticalDesignReview.pdf</a
+          >
+        </p>
+      </section>
+
+      <footer class="footer">
+        <p>Cratos · Liceo Scientifico Enrico Fermi · Padova</p>
+        <p><a href="https://www.esero.it/cansat/">esero.it/cansat</a></p>
+      </footer>
+    </article>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
