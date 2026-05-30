@@ -248,9 +248,11 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  align-items: center;
   gap: 0.5rem 1.5rem;
   font-size: clamp(1rem, 1.6vw, 1.15rem);
   flex: 1;
+  min-width: 0;
 }
 
 .top nav a {
@@ -582,12 +584,21 @@ td {
 }
 
 .team-list li {
-  padding: 0.55rem 0;
+  padding: 0.75rem 0;
   border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.5rem;
 }
 
 .team-list li:last-child {
   border-bottom: none;
+}
+
+.team-name {
+  color: var(--fg);
+  font-weight: 500;
 }
 
 .team-meta {
@@ -599,6 +610,59 @@ td {
   content: " · ";
 }
 
-.team-list--teachers {
+.team-role {
+  flex: 1 1 100%;
+  color: var(--red);
+  font-size: 0.8rem;
+  margin-top: 0.15rem;
+}
+
+.team-list--teachers,
+.team-list--thanks {
   margin-bottom: 0;
+}
+
+.team-list--thanks .team-role {
+  color: var(--dim);
+}
+
+@media (max-width: 768px) {
+  .top {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.85rem var(--pad-x);
+    gap: 0.75rem;
+  }
+
+  .top__brand {
+    justify-content: center;
+    padding-bottom: 0.15rem;
+  }
+
+  .top nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem 0.5rem;
+    width: 100%;
+    font-size: 0.78rem;
+    justify-content: stretch;
+  }
+
+  .top nav a {
+    text-align: center;
+    padding: 0.45rem 0.35rem;
+    line-height: 1.25;
+    border: 1px solid var(--line);
+  }
+
+  .top nav a:hover {
+    border-color: var(--red-dim);
+  }
+}
+
+@media (max-width: 380px) {
+  .top nav {
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 0.72rem;
+  }
 }
