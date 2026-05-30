@@ -59,7 +59,7 @@
         <p class="text-reveal">
           Documentazione del satellite in formato lattina: missione primaria (telemetria
           atmosferica) e secondaria (spettroscopia VLF), quattro PCB circolari custom, antenna a
-          solenoide deployabile e pacchi batteria CR2450 sostituibili dal basamento.
+          solenoide deployabile e pacchi batteria CR5 sostituibili dalla base.
           Regolamento:
           <a href="https://www.esero.it/cansat/">esero.it/cansat</a>.
         </p>
@@ -168,9 +168,10 @@
       <section class="section-block reveal" id="struttura">
         <h2 class="text-reveal">Struttura e CAD</h2>
         <p class="text-reveal">
-          Progetto meccanico in Fusion 360: vano superiore (paracadute / occhiello), stack PCB
-          centrale, basamento per alimentazione e deploy antenna. La sezione mostra quattro PCB,
-          doppio pacco batterie e il meccanismo superiore.
+          Progetto meccanico in Fusion 360: struttura stampata in 3D con miscela di
+          <strong>PLA</strong> e <strong>PETG</strong>. Vano superiore (paracadute / occhiello),
+          stack PCB centrale, base per alimentazione e deploy antenna. La sezione mostra quattro
+          PCB, doppio pacco batterie e il meccanismo superiore.
         </p>
 
         <details class="toggle" open>
@@ -182,11 +183,11 @@
             </figure>
             <figure class="figure">
               <img src="assets/images/render-2.png" alt="Render dal basso" loading="lazy" />
-              <span class="fig-label"><strong>Fig. 7</strong> Basamento — geometria inferiore</span>
+              <span class="fig-label"><strong>Fig. 7</strong> Base — geometria inferiore</span>
             </figure>
             <figure class="figure">
               <img src="assets/images/section.png" alt="Sezione CAD" loading="lazy" />
-              <span class="fig-label"><strong>Fig. 8</strong> Sezione — PCB, CR2450, vano antenna</span>
+              <span class="fig-label"><strong>Fig. 8</strong> Sezione — PCB, CR5, vano antenna</span>
             </figure>
           </div>
         </details>
@@ -198,37 +199,37 @@
         <h2 class="text-reveal">Alimentazione · batterie sostituibili</h2>
         <p class="text-reveal">
           Il regolamento richiede batterie facilmente sostituibili senza smontare tutto il
-          satellite. Cratos usa celle <strong>CR2450</strong> (3 V, 620 mAh) — niente LiPo per
-          vincoli di gara; buon compromesso capacità/volume.
+          satellite. Cratos usa celle <strong>CR5</strong> — niente LiPo per vincoli di gara;
+          buon compromesso capacità e volume.
         </p>
         <h3 class="text-reveal">Posizionamento</h3>
         <p class="text-reveal">
-          Due <strong>moduli batteria</strong> simmetrici nel basamento (coppie di celle per
-          modulo), laterali allo stack PCB nella sezione, separati dal volume elettronico centrale.
+          Due <strong>moduli batteria</strong> simmetrici nella base (coppie di celle per modulo),
+          laterali allo stack PCB nella sezione, separati dal volume elettronico centrale.
         </p>
         <h3 class="text-reveal">Sostituzione dal fondo</h3>
         <ul>
           <li class="text-reveal">
-            <strong>Basamento aperto</strong> — inserti sinistra/destra rimovibili senza aprire il
-            corpo superiore
+            <strong>Base aperta</strong> — inserti sinistra/destra rimovibili senza aprire il corpo
+            superiore
           </li>
           <li class="text-reveal">
-            <strong>Basamento chiuso</strong> — configurazione pre-volo con master switch, USB e
-            LED; le celle si cambiano estraendo gli inserti dal basso
+            <strong>Base chiusa</strong> — configurazione pre-volo con master switch, USB e LED; le
+            celle si cambiano estraendo gli inserti dal basso
           </li>
           <li class="text-reveal">
-            Procedura: spegnimento master → estrazione inserti → sostituzione CR2450 →
+            Procedura: spegnimento master → estrazione inserti → sostituzione CR5 →
             re-inserimento → controllo tensione
           </li>
         </ul>
 
         <details class="toggle">
-          <summary>Viste CAD — batterie e basamento</summary>
+          <summary>Viste CAD — batterie e base</summary>
           <div class="toggle__body fig-gallery fig-gallery--3">
             <figure class="figure">
               <img
                 src="assets/images/batteries-cad.png"
-                alt="CAD batterie nel basamento"
+                alt="CAD batterie nella base"
                 loading="lazy"
               />
               <span class="fig-label"><strong>Fig. 9</strong> Vista laterale — pacchi batteria</span>
@@ -236,24 +237,24 @@
             <figure class="figure">
               <img
                 src="assets/images/bottom-open.png"
-                alt="Basamento aperto"
+                alt="Base aperta"
                 loading="lazy"
               />
-              <span class="fig-label"><strong>Fig. 10</strong> Basamento aperto — moduli estraibili</span>
+              <span class="fig-label"><strong>Fig. 10</strong> Base aperta — moduli estraibili</span>
             </figure>
             <figure class="figure">
               <img
                 src="assets/images/bottom-closed.png"
-                alt="Basamento chiuso"
+                alt="Base chiusa"
                 loading="lazy"
               />
-              <span class="fig-label"><strong>Fig. 11</strong> Basamento chiuso — master, USB, LED</span>
+              <span class="fig-label"><strong>Fig. 11</strong> Base chiusa — master, USB, LED</span>
             </figure>
           </div>
         </details>
         <p class="text-reveal">
           <strong>PCB4</strong> distribuisce le rail ai sottosistemi; interruttori master sul
-          basamento (requisito ESERO).
+          base (requisito ESERO).
         </p>
       </section>
 
