@@ -1,1 +1,2 @@
 assets/docs/*.pdf filter=lfs diff=lfs merge=lfs -text
+assets/flight/*.mp4 filter=lfs diff=lfs merge=lfs -text

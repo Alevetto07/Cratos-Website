@@ -10,6 +10,7 @@ Sito statico del team **Cratos** (Liceo Scientifico Enrico Fermi, Padova) per la
 ├── js/main.js
 ├── assets/
 │   ├── images/         # immagini ottimizzate per il web
+│   ├── flight/         # post-flight charts, video, REPORT.md
 │   └── docs/           # CDR PDF
 ├── vercel.json
 └── README.md
@@ -35,16 +36,19 @@ npx vercel
 
 Il sito è statico. In **Settings → Pages** imposta source su branch `main`, cartella `/ (root)`.
 
-## Git LFS (PDF ~52 MB)
+## Git LFS (PDF + video)
 
-Il CDR supera la soglia consigliata di GitHub. Prima del push:
+Large files use Git LFS:
+
+- `assets/docs/TeamCratos_CriticalDesignReview.pdf` (~52 MB)
+- `assets/flight/registrazione-volo.mp4` (~370 MB)
 
 ```bash
 git lfs install
-git add .gitattributes assets/docs/TeamCratos_CriticalDesignReview.pdf
+git add .gitattributes assets/docs/ assets/flight/registrazione-volo.mp4
 ```
 
-In alternativa comprimi il PDF o ospitalo esternamente e aggiorna il link in `index.html`.
+Vercel may limit deployment size; if the video fails to deploy, host it externally (e.g. YouTube) and update the `<video>` source in `index.html`.
 
 ## Sviluppo locale
 
