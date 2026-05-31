@@ -127,7 +127,9 @@
     "lab.title": "Lab validation",
     "lab.p1":
       "VLF chain tested with function generator, oscilloscope and GNU Octave FFT analysis.",
-    "lab.toggle": "Plots — spectrogram & PSD",
+    "lab.toggle": "Plots — spectrogram, PSD & FFT",
+    "lab.fig20": "<strong>Fig. 20</strong> FFT — electromagnetic spectrum (V)",
+    "lab.fig20alt": "FFT electromagnetic spectrum — intensity vs frequency",
     "flight.title": "Flight results",
     "flight.p1":
       "Post-flight analysis from ground telemetry (<code>LOG-Telemetry.csv</code>, ~2 Hz). The CanSat was hoisted on a rope by a quadcopter to ~60 m, then descended near the launch pad. Altitude from barometry; horizontal motion from IMU dead reckoning (rope swing).",
@@ -139,7 +141,7 @@
     "flight.stat.rmse": "Velocity fusion RMSE",
     "flight.h3trajectory": "3D trajectory",
     "flight.p2":
-      "Interactive model: pressure altitude on Z; X/Y from filtered horizontal IMU (dead reckoning). Animation starts at <strong>t = 80 s</strong> (liftoff from pad); the first 80 s the CanSat is still on the ground.",
+      "Interactive model: pressure altitude on Z; X/Y from filtered horizontal IMU (dead reckoning). On load: full trajectory at end of flight; press <strong>▶ Play</strong> in the chart to replay from the start.",
     "flight.iframeTitle": "3D flight trajectory — dead reckoning",
     "flight.h3telemetry": "Ground telemetry interface",
     "flight.p3":
