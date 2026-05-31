@@ -186,6 +186,12 @@
     "team.title": "Team",
     "team.p1":
       "Team Cratos — Liceo Scientifico Enrico Fermi, Padova. ESERO Italy CanSat competition.",
+    "team.h3press": "Press",
+    "team.press.p1":
+      '<a href="https://www.nordestnews.it/2026/05/18/dal-liceo-fermi-di-padova-allo-spazio-due-team-di-studenti-volano-alle-finali-nazionali-di-cansat/" target="_blank" rel="noopener noreferrer">Nordest News</a> (18 May 2026): Cratos and PEPSISat selected by ESERO Italy for the national CanSat finals at the Turin Astrophysical Observatory.',
+    "team.press.imgAlt": "Nordest News article — Cratos and PEPSISat teams at national CanSat finals",
+    "team.press.caption":
+      "From Liceo Fermi in Padua to space — two student teams fly to the national CanSat finals",
     "team.h3students": "Students",
     "team.role.alessio": "CAD & design · Website",
     "team.role.alvise": "Data collection & analysis",
