@@ -306,6 +306,14 @@ img {
   margin-bottom: 2.5rem;
 }
 
+.flight-note {
+  font-size: 0.85rem;
+  color: var(--dim);
+  margin: 0.5rem 0 1rem;
+  max-width: 52rem;
+  line-height: 1.5;
+}
+
 .flight-charts-embed h4 {
   margin: 2rem 0 0.5rem;
   font-size: 0.95rem;
