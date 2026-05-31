@@ -591,10 +591,87 @@
           ></iframe>
         </div>
 
-        <p class="text-reveal flight-report-link" data-i18n="flight.report">
-          Metodologia, matematica e conclusioni complete:
-          <a href="assets/flight/REPORT.md">REPORT.md</a>
-        </p>
+        <div class="flight-method reveal">
+          <h3 class="text-reveal" data-i18n="flight.h3method">Metodologia, matematica e conclusioni</h3>
+          <p class="text-reveal" data-i18n="flight.method.source">
+            Fonte: telemetria a terra <code>LOG-Telemetry.csv</code> (~2 Hz, 359 campioni, 215 s).
+            Elaborazione offline con la stessa logica del firmware (quota barometrica) e script Python
+            in <code>analysis/flight_report/</code>.
+          </p>
+
+          <h4 class="text-reveal" data-i18n="flight.method.h4pipeline">Pipeline</h4>
+          <pre class="flight-pipeline text-reveal" data-i18n="flight.method.pipeline">LOG-Telemetry.csv
+    │
+    ├─► Filtra pressione valida (800–1100 hPa)
+    ├─► P_ref = mediana(pressione) primi 6 s sul pad
+    ├─► Quota da formula barometrica (zero al lancio)
+    ├─► IMU: rimozione gravità e bias → accel. verticale lineare
+    ├─► Filtro complementare: baro → quota, IMU → velocità verticale
+    └─► 3D: Z = quota baro; X/Y = IMU orizzontale filtrato (oscillazione fune)</pre>
+
+          <h4 class="text-reveal" data-i18n="flight.method.h4math">Matematica</h4>
+
+          <p class="text-reveal" data-i18n="flight.method.baroTitle"><strong>Quota barometrica</strong> (come sul Nano 33 BLE):</p>
+          <p class="formula text-reveal" data-i18n="flight.method.baroFormula">
+            h = 44330 × (1 − (P/P<sub>ref</sub>)<sup>0,190294957</sup>)
+          </p>
+          <ul class="text-reveal" data-i18n="flight.method.baroList">
+            <li><em>P</em> — pressione istantanea (hPa)</li>
+            <li><em>P<sub>ref</sub></em> — mediana primi 6 s a terra (questo volo: 951,34 hPa)</li>
+            <li>Quota relativa: h<sub>rel</sub> = h − h<sub>0</sub></li>
+          </ul>
+
+          <p class="text-reveal" data-i18n="flight.method.deriv">
+            <strong>Derive barometriche:</strong> differenze finite centrali su h(t) per velocità e
+            accelerazione verticale (confrontate nei grafici con la fusione IMU).
+          </p>
+
+          <p class="text-reveal" data-i18n="flight.method.imu">
+            <strong>IMU verticale:</strong> calibrazione gravità sui primi 6 s, stima pitch/roll sul
+            pad, rimozione di 1 g e bias → accelerazione lineare a<sub>lin</sub> (media tra
+            proiezione rotazionale e componente vettoriale).
+          </p>
+
+          <p class="text-reveal" data-i18n="flight.method.filter">
+            <strong>Filtro complementare:</strong> la pressione definisce la quota; l’IMU integra
+            a<sub>lin</sub> e viene corretto verso la velocità barometrica con
+            α = Δt/(τ+Δt), τ = 1 s. RMSE fusione vs derivata baro: <strong>1,346 m/s</strong>.
+          </p>
+
+          <p class="text-reveal" data-i18n="flight.method.dr">
+            <strong>Dead reckoning orizzontale (3D):</strong> frame East/North fisso al lancio;
+            accelerazione orizzontale filtrata (high-pass), integrazione con decadimento e azzeramento
+            a terra; <strong>Z</strong> sempre da pressione. Escursione orizzontale massima nel
+            modello DR: ~60,87 m (deriva IMU amplifica l’oscillazione in vorticchio).
+          </p>
+
+          <h4 class="text-reveal" data-i18n="flight.method.h4conclusions">Conclusioni</h4>
+          <ol class="flight-conclusions text-reveal" data-i18n="flight.method.conclusions">
+            <li>
+              <strong>Quota:</strong> dall’analisi della pressione grezza l’apogeo è
+              <strong>~59,04 m</strong> (t = 131 s), coerente con l’issaggio del quadricottero a
+              ~60 m. La pressione è la fonte primaria affidabile.
+            </li>
+            <li>
+              <strong>Moto verticale:</strong> salita e discesa sono chiare in pressione e velocità
+              derivata; il filtro complementare IMU smussa la velocità verticale tra i campioni baro
+              senza alterare la quota.
+            </li>
+            <li>
+              <strong>Moto orizzontale:</strong> oscillazione sulla fune; offset di atterraggio
+              <strong>~1,06 m</strong> dal pad — accettabile senza GPS.
+            </li>
+            <li>
+              <strong>IMU grezzo:</strong> modulo accelerometro vicino a 1 g in assenza di forte
+              accelerazione lineare; gyro elevato in fase di vorticchio — l’integrazione pura IMU
+              senza baro non regge.
+            </li>
+            <li>
+              <strong>Record usato:</strong> solo telemetria a terra (359 campioni, 215 s) come log
+              più completo per questo volo.
+            </li>
+          </ol>
+        </div>
       </section>
 
       <hr class="divider" />

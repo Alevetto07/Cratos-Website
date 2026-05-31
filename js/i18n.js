@@ -147,8 +147,35 @@
     "flight.chart2Title": "Vertical acceleration",
     "flight.chart3Title": "Pressure vs time",
     "flight.chart4Title": "Raw IMU",
-    "flight.report":
-      'Full methodology, maths and conclusions: <a href="assets/flight/REPORT.md">REPORT.md</a>',
+    "flight.h3method": "Methodology, maths and conclusions",
+    "flight.method.source":
+      "Source: ground telemetry <code>LOG-Telemetry.csv</code> (~2 Hz, 359 samples, 215 s). Offline processing uses the same barometric logic as the firmware and Python scripts in <code>analysis/flight_report/</code>.",
+    "flight.method.h4pipeline": "Pipeline",
+    "flight.method.pipeline": `LOG-Telemetry.csv
+    │
+    ├─► Filter valid pressure (800–1100 hPa)
+    ├─► P_ref = median(pressure) first 6 s on pad
+    ├─► Altitude from barometric formula (zero at launch)
+    ├─► IMU: remove gravity and bias → linear vertical acceleration
+    ├─► Complementary filter: baro → altitude, IMU → vertical velocity
+    └─► 3D: Z = baro altitude; X/Y = filtered horizontal IMU (rope swing)`,
+    "flight.method.h4math": "Mathematics",
+    "flight.method.baroTitle": "<strong>Barometric altitude</strong> (same as Nano 33 BLE firmware):",
+    "flight.method.baroFormula":
+      "h = 44330 × (1 − (P/P<sub>ref</sub>)<sup>0.190294957</sup>)",
+    "flight.method.baroList":
+      "<li><em>P</em> — instantaneous pressure (hPa)</li><li><em>P<sub>ref</sub></em> — median over first 6 s on pad (this flight: 951.34 hPa)</li><li>Relative altitude: h<sub>rel</sub> = h − h<sub>0</sub></li>",
+    "flight.method.deriv":
+      "<strong>Baro derivatives:</strong> central finite differences on h(t) for vertical velocity and acceleration (compared in charts against IMU fusion).",
+    "flight.method.imu":
+      "<strong>Vertical IMU:</strong> gravity calibration over first 6 s, pitch/roll estimate on pad, remove 1 g and bias → linear acceleration a<sub>lin</sub> (average of rotational projection and vector component).",
+    "flight.method.filter":
+      "<strong>Complementary filter:</strong> pressure sets altitude; IMU integrates a<sub>lin</sub> and is nudged toward baro velocity with α = Δt/(τ+Δt), τ = 1 s. Fusion RMSE vs baro derivative: <strong>1.346 m/s</strong>.",
+    "flight.method.dr":
+      "<strong>Horizontal dead reckoning (3D):</strong> East/North frame fixed at launch; high-pass filtered horizontal acceleration, integration with decay and ground zeroing; <strong>Z</strong> always from pressure. Peak horizontal excursion in DR model: ~60.87 m (IMU drift amplifies swing during tumble).",
+    "flight.method.h4conclusions": "Conclusions",
+    "flight.method.conclusions":
+      "<li><strong>Altitude:</strong> raw pressure analysis gives apogee <strong>~59.04 m</strong> (t = 131 s), matching the ~60 m quadcopter hoist. Pressure is the primary trusted source.</li><li><strong>Vertical motion:</strong> ascent and descent are clear in pressure and derived velocity; IMU complementary filtering smooths vertical speed between baro samples without corrupting altitude.</li><li><strong>Horizontal motion:</strong> rope swing; landing offset <strong>~1.06 m</strong> from pad — acceptable without GPS.</li><li><strong>Raw IMU:</strong> accelerometer magnitude near 1 g without strong linear acceleration; high gyro during tumble — pure IMU integration fails without baro aiding.</li><li><strong>Record used:</strong> ground telemetry only (359 samples, 215 s) as the most complete log for this flight.</li>",
     "team.title": "Team",
     "team.p1":
       "Team Cratos — Liceo Scientifico Enrico Fermi, Padova. ESERO Italy CanSat competition.",
