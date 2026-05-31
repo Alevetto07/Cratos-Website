@@ -8,6 +8,7 @@ MAG_ERR_UT = 0.014
 ROOT = Path(__file__).resolve().parents[1]
 df = pd.read_csv(ROOT / "LOG-Telemetry.csv")
 df["t_s"] = (df["t_ms"] - df["t_ms"].min()) / 1000.0
+df = df.sort_values("t_s", kind="stable").reset_index(drop=True)
 b = (df["mag_x_uT"] ** 2 + df["mag_y_uT"] ** 2 + df["mag_z_uT"] ** 2) ** 0.5
 err_label = f"±{MAG_ERR_UT:g} µT"
 
