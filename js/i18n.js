@@ -125,7 +125,9 @@
     "lab.title": "Lab validation",
     "lab.p1":
       "VLF chain tested with function generator, oscilloscope and GNU Octave FFT analysis; Bode plot (magnitude and phase).",
-    "lab.toggle": "Plots — spectrogram, PSD, FFT & Bode",
+    "lab.toggle": "Plots — spectrogram, PSD, FFT & Bode (lab tests)",
+    "lab.fig18b": "<strong>Fig. 18b</strong> Normalized spectrogram [dBV RMS]",
+    "lab.fig18bAlt": "Normalized signal spectrogram — frequency vs time",
     "lab.fig20": "<strong>Fig. 20</strong> FFT — electromagnetic spectrum (V)",
     "lab.fig20alt": "FFT electromagnetic spectrum — intensity vs frequency",
     "lab.fig21": "<strong>Fig. 21</strong> Bode diagram",

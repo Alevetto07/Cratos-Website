@@ -293,11 +293,11 @@
         <details class="toggle">
           <summary data-i18n="pcb.toggle1">Panoramica stack PCB</summary>
           <div class="toggle__body fig-gallery fig-gallery--2">
-            <figure class="figure">
+            <figure class="figure figure--layout">
               <img src="assets/images/pcb-side.png" alt="Stack PCB vista laterale" loading="lazy" />
               <span class="fig-label"><strong>Fig. 12</strong> Stack — vista laterale</span>
             </figure>
-            <figure class="figure">
+            <figure class="figure figure--layout">
               <img src="assets/images/pcb-stack.png" alt="Impilamento PCB" loading="lazy" />
               <span class="fig-label"><strong>Fig. 13</strong> Impilamento meccanico</span>
             </figure>
@@ -493,10 +493,10 @@
         </p>
         <details class="toggle">
           <summary data-i18n="lab.toggle">
-            Grafici — spettrogramma, PSD, FFT e Bode
+            Grafici — spettrogramma, PSD, FFT e Bode (test in laboratorio)
           </summary>
           <div class="toggle__body">
-            <div class="fig-gallery fig-gallery--3">
+            <div class="fig-gallery fig-gallery--lab">
               <figure class="figure">
                 <img
                   src="assets/images/spettrogramma.png"
@@ -504,6 +504,17 @@
                   loading="lazy"
                 />
                 <span class="fig-label"><strong>Fig. 18</strong> Analisi tempo-frequenza</span>
+              </figure>
+              <figure class="figure">
+                <img
+                  src="assets/images/spettrogramma-normalized.png"
+                  alt="Spettrogramma del segnale normalizzato"
+                  data-i18n-alt="lab.fig18bAlt"
+                  loading="lazy"
+                />
+                <span class="fig-label" data-i18n="lab.fig18b"
+                  ><strong>Fig. 18b</strong> Spettrogramma normalizzato [dBV RMS]</span
+                >
               </figure>
               <figure class="figure">
                 <img
@@ -524,18 +535,18 @@
                   ><strong>Fig. 20</strong> FFT — spettro elettromagnetico (V)</span
                 >
               </figure>
+              <figure class="figure">
+                <img
+                  src="assets/flight/bode-diagram.png"
+                  alt="Diagramma di Bode — modulo e fase"
+                  data-i18n-alt="lab.fig21alt"
+                  loading="lazy"
+                />
+                <span class="fig-label" data-i18n="lab.fig21"
+                  ><strong>Fig. 21</strong> Diagramma di Bode</span
+                >
+              </figure>
             </div>
-            <figure class="figure">
-              <img
-                src="assets/flight/bode-diagram.png"
-                alt="Diagramma di Bode — modulo e fase"
-                data-i18n-alt="lab.fig21alt"
-                loading="lazy"
-              />
-              <span class="fig-label" data-i18n="lab.fig21"
-                ><strong>Fig. 21</strong> Diagramma di Bode</span
-              >
-            </figure>
           </div>
         </details>
       </section>
