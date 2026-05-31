@@ -492,52 +492,65 @@
           Octave; segnale EM nei primi millisecondi e diagramma di Bode (modulo e fase).
         </p>
         <details class="toggle">
-          <summary data-i18n="lab.toggle">Grafici — spettrogramma, PSD e FFT</summary>
-          <div class="toggle__body fig-gallery fig-gallery--3">
-            <figure class="figure">
-              <img
-                src="assets/images/spettrogramma.png"
-                alt="Spettrogramma tempo-frequenza"
-                loading="lazy"
-              />
-              <span class="fig-label"><strong>Fig. 18</strong> Analisi tempo-frequenza</span>
-            </figure>
-            <figure class="figure">
-              <img src="assets/images/fourier-psd.png" alt="Densità spettrale di potenza" loading="lazy" />
-              <span class="fig-label"><strong>Fig. 19</strong> PSD (dB/Hz)</span>
-            </figure>
-            <figure class="figure">
-              <img
-                src="assets/images/fourier-volt.png"
-                alt="FFT spettro elettromagnetico — intensità vs frequenza"
-                data-i18n-alt="lab.fig20alt"
-                loading="lazy"
-              />
-              <span class="fig-label" data-i18n="lab.fig20"
-                ><strong>Fig. 20</strong> FFT — spettro elettromagnetico (V)</span
-              >
-            </figure>
+          <summary data-i18n="lab.toggle">
+            Grafici — spettrogramma, PSD, FFT, segnale EM e Bode
+          </summary>
+          <div class="toggle__body">
+            <div class="fig-gallery fig-gallery--3">
+              <figure class="figure">
+                <img
+                  src="assets/images/spettrogramma.png"
+                  alt="Spettrogramma tempo-frequenza"
+                  loading="lazy"
+                />
+                <span class="fig-label"><strong>Fig. 18</strong> Analisi tempo-frequenza</span>
+              </figure>
+              <figure class="figure">
+                <img
+                  src="assets/images/fourier-psd.png"
+                  alt="Densità spettrale di potenza"
+                  loading="lazy"
+                />
+                <span class="fig-label"><strong>Fig. 19</strong> PSD (dB/Hz)</span>
+              </figure>
+              <figure class="figure">
+                <img
+                  src="assets/images/fourier-volt.png"
+                  alt="FFT spettro elettromagnetico — intensità vs frequenza"
+                  data-i18n-alt="lab.fig20alt"
+                  loading="lazy"
+                />
+                <span class="fig-label" data-i18n="lab.fig20"
+                  ><strong>Fig. 20</strong> FFT — spettro elettromagnetico (V)</span
+                >
+              </figure>
+            </div>
+            <div class="fig-gallery fig-gallery--2">
+              <figure class="figure">
+                <img
+                  src="assets/flight/em-signal-first-ms.png"
+                  alt="Segnale EM nel tempo (primi ms)"
+                  data-i18n-alt="lab.fig21alt"
+                  loading="lazy"
+                />
+                <span class="fig-label" data-i18n="lab.fig21"
+                  ><strong>Fig. 21</strong> Segnale EM nel tempo (primi ms)</span
+                >
+              </figure>
+              <figure class="figure">
+                <img
+                  src="assets/flight/bode-diagram.png"
+                  alt="Diagramma di Bode — modulo e fase"
+                  data-i18n-alt="lab.fig22alt"
+                  loading="lazy"
+                />
+                <span class="fig-label" data-i18n="lab.fig22"
+                  ><strong>Fig. 22</strong> Diagramma di Bode</span
+                >
+              </figure>
+            </div>
           </div>
         </details>
-
-        <div class="flight-charts-embed">
-          <h4 class="text-reveal" data-i18n="lab.emSignal">Segnale EM nel tempo (primi ms)</h4>
-          <iframe
-            class="flight-frame flight-frame--chart"
-            src="assets/flight/08_em_signal.html"
-            title="Segnale EM nel tempo (primi ms)"
-            data-i18n-title="lab.emSignalTitle"
-            loading="lazy"
-          ></iframe>
-          <h4 class="text-reveal" data-i18n="lab.bode">Diagramma di Bode</h4>
-          <iframe
-            class="flight-frame flight-frame--chart flight-frame--chart-bode"
-            src="assets/flight/09_bode.html"
-            title="Diagramma di Bode"
-            data-i18n-title="lab.bodeTitle"
-            loading="lazy"
-          ></iframe>
-        </div>
       </section>
 
       <hr class="divider divider--accent" />

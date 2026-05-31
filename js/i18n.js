@@ -125,13 +125,13 @@
     "lab.title": "Lab validation",
     "lab.p1":
       "VLF chain tested with function generator, oscilloscope and GNU Octave FFT analysis; EM signal in the first milliseconds and Bode plot (magnitude and phase).",
-    "lab.toggle": "Plots — spectrogram, PSD & FFT",
+    "lab.toggle": "Plots — spectrogram, PSD, FFT, EM signal & Bode",
     "lab.fig20": "<strong>Fig. 20</strong> FFT — electromagnetic spectrum (V)",
     "lab.fig20alt": "FFT electromagnetic spectrum — intensity vs frequency",
-    "lab.emSignal": "EM signal vs time (first ms)",
-    "lab.emSignalTitle": "EM signal vs time (first ms)",
-    "lab.bode": "Bode diagram",
-    "lab.bodeTitle": "Bode diagram",
+    "lab.fig21": "<strong>Fig. 21</strong> EM signal vs time (first ms)",
+    "lab.fig21alt": "EM signal vs time (first ms) — amplitude in volts",
+    "lab.fig22": "<strong>Fig. 22</strong> Bode diagram",
+    "lab.fig22alt": "Bode diagram — magnitude and phase vs frequency",
     "flight.title": "Flight results",
     "flight.p1":
       "Post-flight analysis from ground telemetry (<code>LOG-Telemetry.csv</code>, ~2 Hz). The CanSat was hoisted on a rope by a quadcopter to ~60 m, then descended near the launch pad. Altitude from barometry; horizontal motion from IMU dead reckoning (rope swing).",
