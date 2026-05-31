@@ -24,7 +24,7 @@
     "meta.school": "Liceo Scientifico Enrico Fermi · Padova",
     "meta.form": "Soda-can form factor 66 × 115 mm",
     "intro.body":
-      'Documentation for a soda-can satellite: primary mission (atmospheric telemetry) and secondary mission (VLF spectroscopy), four custom circular PCBs, deployable solenoid antenna, and swappable CR5 battery packs from the base. Rules: <a href="https://www.esero.it/cansat/">esero.it/cansat</a>.',
+      'Documentation for a soda-can satellite: primary mission (atmospheric telemetry) and secondary mission (VLF spectroscopy), four custom circular PCBs, deployable solenoid antenna, and swappable CR2 battery packs from the base. Rules: <a href="https://www.esero.it/cansat/">esero.it/cansat</a>.',
     "primary.title": "Primary mission",
     "primary.p1":
       "Competition requirement: measure <strong>pressure</strong> and <strong>temperature</strong> of the air and transmit to the ground station at least <strong>1 sample per second</strong>.",
@@ -64,7 +64,7 @@
     "structure.toggle": "CAD renders & section",
     "power.title": "Power · swappable batteries",
     "power.p1":
-      "Rules require easily replaceable batteries without disassembling the full satellite. Cratos uses <strong>CR5</strong> cells — no LiPo per competition constraints; good capacity/volume trade-off.",
+      "Rules require easily replaceable batteries without disassembling the full satellite. Cratos uses <strong>CR2</strong> cells — no LiPo per competition constraints; good capacity/volume trade-off.",
     "power.h3pos": "Placement",
     "power.p2":
       "Two symmetric <strong>battery modules</strong> in the base (cell pairs per module), lateral to the PCB stack in section view, separate from the central electronics volume.",
@@ -74,7 +74,7 @@
     "power.li2":
       "<strong>Closed base</strong> — pre-flight config with master switch, USB and LEDs; cells replaced by extracting inserts from below",
     "power.li3":
-      "Procedure: master off → remove inserts → replace CR5 → re-seat → voltage check",
+      "Procedure: master off → remove inserts → replace CR2 → re-seat → voltage check",
     "power.toggle": "CAD views — batteries and base",
     "power.p3":
       "<strong>PCB4</strong> distributes rails to subsystems; master switches on the base (ESERO requirement).",
