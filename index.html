@@ -618,7 +618,7 @@
         <h3 class="text-reveal" data-i18n="flight.h3charts">Grafici post-volo</h3>
         <p class="text-reveal" data-i18n="flight.p5">
           Stessi dati elaborati offline da <code>LOG-Telemetry.csv</code> (baro, fusione velocità,
-          pressione, temperatura, IMU grezzo).
+          pressione, temperatura, IMU grezzo, magnetometro).
         </p>
         <div class="flight-charts-embed">
           <h4 class="text-reveal" data-i18n="flight.chart1">Velocità verticale (baro vs IMU)</h4>
@@ -659,6 +659,14 @@
             src="assets/flight/06_temperature.html"
             title="Temperatura vs tempo"
             data-i18n-title="flight.chart5Title"
+            loading="lazy"
+          ></iframe>
+          <h4 class="text-reveal" data-i18n="flight.chart6">Magnetometro vs tempo</h4>
+          <iframe
+            class="flight-frame flight-frame--chart"
+            src="assets/flight/07_magnetometer.html"
+            title="Magnetometro vs tempo"
+            data-i18n-title="flight.chart6Title"
             loading="lazy"
           ></iframe>
         </div>

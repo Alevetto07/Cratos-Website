@@ -30,25 +30,12 @@
       "Competition requirement: measure <strong>pressure</strong> and <strong>temperature</strong> of the air and transmit to the ground station at least <strong>1 sample per second</strong>.",
     "primary.h3chain": "Data path",
     "primary.chain":
-      "<strong>Integrated sensor</strong> → <strong>Arduino Nano 33 BLE Sense Rev2</strong> → <strong>APC220</strong> → <strong>Ground receiver</strong> → GNU Octave",
+      "<strong>Integrated sensor</strong> → <strong>Arduino Nano 33 BLE</strong> → <strong>APC220</strong> → <strong>Ground receiver</strong> → GNU Octave",
     "primary.li1": "Single MCU with onboard BMP — less wiring and volume",
     "primary.li2": "APC220 radio downlink to the team ground station",
     "primary.li3": "Firmware: sampling, framing, periodic transmit ≥ 1 Hz",
     "primary.dt1": "MCU / sensors",
-    "primary.dd1": "Arduino Nano 33 BLE Sense Rev2",
-    "primary.fig1": "<strong>Fig. 1</strong> Arduino Nano 33 BLE Sense Rev2",
-    "primary.fig1alt": "Arduino Nano 33 BLE Sense Rev2",
-    "primary.rev2toggle": "Nano 33 BLE Sense Rev2 — library error (Rev1 vs Rev2)",
-    "primary.rev2p":
-      "<strong>Rev2</strong> is not interchangeable with Rev1: IMU and temperature/humidity use different chips. Rev1 examples and libraries (<code>Arduino_LSM9DS1</code>, <code>ArduinoHTS221</code>) on a Rev2 board cause init failures or missing data (e.g. IMU stuck around ~0.39&nbsp;Hz with no usable samples). Official guide: <a href=\"https://support.arduino.cc/hc/en-us/articles/11729186296476\" target=\"_blank\" rel=\"noopener noreferrer\">sensor libraries for Rev2</a>.",
-    "primary.rev2li1":
-      "<strong>Rev2 IMU:</strong> BMI270 + BMM150 → <code>Arduino_BMI270_BMM150</code> (not <code>Arduino_LSM9DS1</code>)",
-    "primary.rev2li2":
-      "<strong>Rev2 T / RH:</strong> HS3003 → <code>Arduino_HS300x</code> (not <code>ArduinoHTS221</code>)",
-    "primary.rev2li3":
-      "<strong>Pressure:</strong> LPS22HB unchanged → <code>Arduino_LPS22HB</code>",
-    "primary.rev2li4":
-      "<strong>USB / upload:</strong> a bad sketch can break the USB serial port; recover with double-tap RESET (bootloader, pulsing orange LED) — <a href=\"https://forum.arduino.cc/t/nano-33-ble-sense-rev2-sensors-not-working/1401645\" target=\"_blank\" rel=\"noopener noreferrer\">forum thread</a>",
+    "primary.dd1": "Arduino Nano 33 BLE",
     "primary.dt2": "Telemetry",
     "primary.dd2": "APC220 radio module",
     "primary.dt3": "Constraint",
@@ -122,7 +109,7 @@
     "components.th3": "Qty purchased",
     "components.th4": "Price € (each)",
     "components.r1": "Secondary mission MCU",
-    "components.r2": "Primary mission MCU — Arduino Nano 33 BLE Sense Rev2",
+    "components.r2": "Primary mission MCU (integrated temp. & pressure sensors)",
     "components.r3": "Radio transmission module",
     "components.r4": "microSD",
     "components.r5": "microSD writer module",
@@ -158,7 +145,7 @@
     "flight.iframeTitle": "3D flight trajectory — dead reckoning",
     "flight.h3telemetry": "Ground telemetry interface",
     "flight.p3":
-      "During the flight the ground station receives packets over <strong>APC220 @ 9600 bps</strong> (serial port, e.g. COM6). Nano 33 BLE Sense Rev2 firmware sends pressure, temperature and IMU at ~2 Hz; the web app decodes frames, checks CRC, and updates the dashboard and CSV logger.",
+      "During the flight the ground station receives packets over <strong>APC220 @ 9600 bps</strong> (serial port, e.g. COM6). Nano 33 BLE firmware sends pressure, temperature and IMU at ~2 Hz; the web app decodes frames, checks CRC, and updates the dashboard and CSV logger.",
     "flight.p4":
       "The <em>Telemetria CanSat Cratos</em> screen handles connection, RX/CRC counters, sensor selection, file logging and mission timer (T+). The <em>CRATOS CREW HUD</em> panel shows live barometry, altitude, attitude (artificial horizon), accelerometer, gyroscope, magnetometer and acoustic sensor.",
     "flight.img1Alt": "Ground telemetry dashboard — serial link, CSV logger and mission timer",
@@ -167,21 +154,19 @@
     "flight.img2Cap": "Crew HUD — live flight telemetry",
     "flight.h3charts": "Post-flight charts",
     "flight.p5":
-      "Same data processed offline from <code>LOG-Telemetry.csv</code> (baro, velocity fusion, pressure, temperature, raw IMU).",
-    "flight.rev2note":
-      "IMU charts and fusion use telemetry recorded after fixing firmware for the <strong>Arduino Nano 33 BLE Sense Rev2</strong> (<code>Arduino_BMI270_BMM150</code> / <code>Arduino_HS300x</code>, not Rev1 APIs).",
-    "flight.imuNote":
-      "With Rev1 libraries on a Rev2 board the IMU does not initialize correctly; the data shown here is consistent only after switching to Rev2 libraries (see primary mission section).",
+      "Same data processed offline from <code>LOG-Telemetry.csv</code> (baro, velocity fusion, pressure, temperature, raw IMU, magnetometer).",
     "flight.chart1": "Vertical velocity (baro vs IMU)",
     "flight.chart2": "Vertical acceleration",
     "flight.chart3": "Pressure vs time",
     "flight.chart4": "Raw IMU (accel & gyro)",
     "flight.chart5": "Temperature vs time",
+    "flight.chart6": "Magnetometer vs time",
     "flight.chart1Title": "Vertical velocity",
     "flight.chart2Title": "Vertical acceleration",
     "flight.chart3Title": "Pressure vs time",
     "flight.chart4Title": "Raw IMU",
     "flight.chart5Title": "Temperature vs time",
+    "flight.chart6Title": "Magnetometer vs time",
     "flight.h3method": "Methodology, maths and conclusions",
     "flight.method.source":
       "Source: ground telemetry <code>LOG-Telemetry.csv</code> (~2 Hz, 359 samples, 215 s). Offline processing uses the same barometric logic as the firmware and Python scripts in <code>analysis/flight_report/</code>.",
@@ -195,8 +180,7 @@
     ├─► Complementary filter: baro → altitude, IMU → vertical velocity
     └─► 3D: Z = baro altitude; X/Y = filtered horizontal IMU (rope swing)`,
     "flight.method.h4math": "Mathematics",
-    "flight.method.baroTitle":
-      "<strong>Barometric altitude</strong> (same as Nano 33 BLE Sense Rev2 firmware, LPS22HB):",
+    "flight.method.baroTitle": "<strong>Barometric altitude</strong> (same as Nano 33 BLE firmware):",
     "flight.method.baroFormula":
       "h = 44330 × (1 − (P/P<sub>ref</sub>)<sup>0.190294957</sup>)",
     "flight.method.baroList":
