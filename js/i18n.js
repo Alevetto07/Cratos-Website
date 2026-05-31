@@ -154,7 +154,7 @@
     "flight.img2Cap": "Crew HUD — live flight telemetry",
     "flight.h3charts": "Post-flight charts",
     "flight.p5":
-      "Same data processed offline from <code>LOG-Telemetry.csv</code> (baro, velocity fusion, pressure, temperature, raw IMU, magnetometer) plus secondary-mission EM signal (first ms).",
+      "Same data processed offline from <code>LOG-Telemetry.csv</code> (baro, velocity fusion, pressure, temperature, raw IMU, magnetometer) plus secondary-mission analysis (EM signal, Bode plot).",
     "flight.chart1": "Vertical velocity (baro vs IMU)",
     "flight.chart2": "Vertical acceleration",
     "flight.chart3": "Pressure vs time",
@@ -169,6 +169,8 @@
     "flight.chart6Title": "Magnetometer",
     "flight.chart7": "EM signal vs time (first ms)",
     "flight.chart7Title": "EM signal vs time (first ms)",
+    "flight.chart8": "Bode diagram",
+    "flight.chart8Title": "Bode diagram",
     "flight.h3method": "Methodology, maths and conclusions",
     "flight.method.source":
       "Source: ground telemetry <code>LOG-Telemetry.csv</code> (~2 Hz, 359 samples, 215 s). Offline processing uses the same barometric logic as the firmware and Python scripts in <code>analysis/flight_report/</code>.",

@@ -618,8 +618,8 @@
         <h3 class="text-reveal" data-i18n="flight.h3charts">Grafici post-volo</h3>
         <p class="text-reveal" data-i18n="flight.p5">
           Stessi dati elaborati offline da <code>LOG-Telemetry.csv</code> (baro, fusione velocità,
-          pressione, temperatura, IMU grezzo, magnetometro) e segnale EM della missione secondaria
-          (primi ms).
+          pressione, temperatura, IMU grezzo, magnetometro) e analisi missione secondaria (segnale
+          EM, diagramma di Bode).
         </p>
         <div class="flight-charts-embed">
           <h4 class="text-reveal" data-i18n="flight.chart1">Velocità verticale (baro vs IMU)</h4>
@@ -678,6 +678,14 @@
             src="assets/flight/08_em_signal.html"
             title="Segnale EM nel tempo (primi ms)"
             data-i18n-title="flight.chart7Title"
+            loading="lazy"
+          ></iframe>
+          <h4 class="text-reveal" data-i18n="flight.chart8">Diagramma di Bode</h4>
+          <iframe
+            class="flight-frame flight-frame--chart flight-frame--chart-bode"
+            src="assets/flight/09_bode.html"
+            title="Diagramma di Bode"
+            data-i18n-title="flight.chart8Title"
             loading="lazy"
           ></iframe>
         </div>

@@ -306,6 +306,10 @@ img {
   margin-bottom: 2.5rem;
 }
 
+.flight-frame--chart-bode {
+  height: 560px;
+}
+
 .flight-charts-embed h4 {
   margin: 2rem 0 0.5rem;
   font-size: 0.95rem;
@@ -881,6 +885,10 @@ td {
 
   .flight-frame--chart {
     height: 380px;
+  }
+
+  .flight-frame--chart-bode {
+    height: 460px;
   }
 }
 
