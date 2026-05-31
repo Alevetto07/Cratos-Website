@@ -493,7 +493,7 @@
         <h2 class="text-reveal" data-i18n="lab.title">Validazione in laboratorio</h2>
         <p class="text-reveal" data-i18n="lab.p1">
           Test della catena VLF con generatore di funzioni, oscilloscopio e analisi FFT in GNU
-          Octave.
+          Octave; segnale EM nei primi millisecondi e diagramma di Bode (modulo e fase).
         </p>
         <details class="toggle">
           <summary data-i18n="lab.toggle">Grafici — spettrogramma, PSD e FFT</summary>
@@ -523,6 +523,25 @@
             </figure>
           </div>
         </details>
+
+        <div class="flight-charts-embed">
+          <h4 class="text-reveal" data-i18n="lab.emSignal">Segnale EM nel tempo (primi ms)</h4>
+          <iframe
+            class="flight-frame flight-frame--chart"
+            src="assets/flight/08_em_signal.html"
+            title="Segnale EM nel tempo (primi ms)"
+            data-i18n-title="lab.emSignalTitle"
+            loading="lazy"
+          ></iframe>
+          <h4 class="text-reveal" data-i18n="lab.bode">Diagramma di Bode</h4>
+          <iframe
+            class="flight-frame flight-frame--chart flight-frame--chart-bode"
+            src="assets/flight/09_bode.html"
+            title="Diagramma di Bode"
+            data-i18n-title="lab.bodeTitle"
+            loading="lazy"
+          ></iframe>
+        </div>
       </section>
 
       <hr class="divider divider--accent" />
@@ -618,8 +637,7 @@
         <h3 class="text-reveal" data-i18n="flight.h3charts">Grafici post-volo</h3>
         <p class="text-reveal" data-i18n="flight.p5">
           Stessi dati elaborati offline da <code>LOG-Telemetry.csv</code> (baro, fusione velocità,
-          pressione, temperatura, IMU grezzo, magnetometro) e analisi missione secondaria (segnale
-          EM, diagramma di Bode).
+          pressione, temperatura, IMU grezzo, magnetometro).
         </p>
         <div class="flight-charts-embed">
           <h4 class="text-reveal" data-i18n="flight.chart1">Velocità verticale (baro vs IMU)</h4>
@@ -668,24 +686,6 @@
             src="assets/flight/07_magnetometer.html?v=4"
             title="Magnetometro"
             data-i18n-title="flight.chart6Title"
-            loading="lazy"
-          ></iframe>
-          <h4 class="text-reveal" data-i18n="flight.chart7">
-            Segnale EM nel tempo (primi ms)
-          </h4>
-          <iframe
-            class="flight-frame flight-frame--chart"
-            src="assets/flight/08_em_signal.html"
-            title="Segnale EM nel tempo (primi ms)"
-            data-i18n-title="flight.chart7Title"
-            loading="lazy"
-          ></iframe>
-          <h4 class="text-reveal" data-i18n="flight.chart8">Diagramma di Bode</h4>
-          <iframe
-            class="flight-frame flight-frame--chart flight-frame--chart-bode"
-            src="assets/flight/09_bode.html"
-            title="Diagramma di Bode"
-            data-i18n-title="flight.chart8Title"
             loading="lazy"
           ></iframe>
         </div>
