@@ -371,68 +371,102 @@
       <hr class="divider" />
 
       <section class="section-block reveal" id="componenti">
-        <h2 class="text-reveal" data-i18n="components.title">Mappa componenti</h2>
-        <details class="toggle" open>
-          <summary data-i18n="components.toggle">Tabella componenti completa</summary>
-          <div class="toggle__body table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th data-i18n="components.th1">Ruolo</th>
-                  <th data-i18n="components.th2">Componente</th>
-                  <th data-i18n="components.th3">Missione</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-i18n="components.r1">MCU + BMP</td>
-                  <td>Arduino Nano 33 BLE</td>
-                  <td data-i18n="components.m1">Primaria</td>
-                </tr>
-                <tr>
-                  <td data-i18n="components.r2">Radio</td>
-                  <td>APC220</td>
-                  <td data-i18n="components.m1">Primaria</td>
-                </tr>
-                <tr>
-                  <td data-i18n="components.r3">MCU + ADC</td>
-                  <td>Teensy 4.1</td>
-                  <td data-i18n="components.m2">Secondaria</td>
-                </tr>
-                <tr>
-                  <td data-i18n="components.r4">Memoria</td>
-                  <td>microSD 3,3 V + 32 GB</td>
-                  <td data-i18n="components.m2">Secondaria</td>
-                </tr>
-                <tr>
-                  <td data-i18n="components.r5">Deploy</td>
-                  <td>Servomotore</td>
-                  <td data-i18n="components.m2">Secondaria</td>
-                </tr>
-                <tr>
-                  <td data-i18n="components.r6">Antenna</td>
-                  <td>200 m AWG30 × 100 spire</td>
-                  <td data-i18n="components.m2">Secondaria</td>
-                </tr>
-                <tr>
-                  <td data-i18n="components.r7">Condizionamento</td>
-                  <td>PCB1 – PCB3</td>
-                  <td data-i18n="components.m2">Secondaria</td>
-                </tr>
-                <tr>
-                  <td data-i18n="components.r8">Alimentazione</td>
-                  <td>PCB4 + CR5</td>
-                  <td data-i18n="components.m3">Entrambe</td>
-                </tr>
-                <tr>
-                  <td data-i18n="components.r9">Sicurezza</td>
-                  <td>Master switch (base)</td>
-                  <td data-i18n="components.m3">Entrambe</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </details>
+        <h2 class="text-reveal" data-i18n="components.title">Distinta materiali (BOM)</h2>
+        <p class="text-reveal" data-i18n="components.p1">
+          Componenti acquistati per il progetto — prezzi unitari e totali di budget (CDR).
+        </p>
+        <div class="table-wrap">
+          <table class="bom-table">
+            <thead>
+              <tr>
+                <th data-i18n="components.th1">Funzione</th>
+                <th data-i18n="components.th2">Componente</th>
+                <th data-i18n="components.th3">N. pezzi acquistati</th>
+                <th data-i18n="components.th4">Prezzo € (1 pezzo)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="components.r1">MCU missione secondaria</td>
+                <td>Teensy 4.1</td>
+                <td>2</td>
+                <td>57,46</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r2">
+                  MCU missione primaria (sensori temp. e pressione integrati)
+                </td>
+                <td>Arduino Nano BLE 33</td>
+                <td>1</td>
+                <td>23,91</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r3">Modulo trasmissione radio</td>
+                <td>APC220</td>
+                <td>1</td>
+                <td>66,61</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r4">MicroSD</td>
+                <td>Micro SDHC Classe 10 Kingston 32GB</td>
+                <td>4</td>
+                <td>10,00</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r5">Modulo scrittura microSD</td>
+                <td>3.3V Micro SD Card Module Mini TF</td>
+                <td>1</td>
+                <td>2,20</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r6">Antenna missione secondaria</td>
+                <td data-i18n="components.r6comp">Cavo di rame (250 m)</td>
+                <td>1</td>
+                <td>22,00</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r7">Circuito di amplificazione e protezione</td>
+                <td>PCB</td>
+                <td>1</td>
+                <td>50,00</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r8">Cavi M/M 10 cm</td>
+                <td data-i18n="components.r8comp">Cavi M/M 10 cm</td>
+                <td>1</td>
+                <td>2,32</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r9">Batterie</td>
+                <td data-i18n="components.r9comp">Batterie CR2</td>
+                <td>12</td>
+                <td>3,90</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r10">Materiale stampa 3D</td>
+                <td>PLA 1Kg — ROSSO</td>
+                <td>1</td>
+                <td>20,862</td>
+              </tr>
+              <tr>
+                <td data-i18n="components.r11">Servomotore</td>
+                <td>GS-1502</td>
+                <td>1</td>
+                <td>12,49</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="bom-total">
+                <th colspan="3" data-i18n="components.total">Costo totale €</th>
+                <td><strong>402,13</strong></td>
+              </tr>
+              <tr class="bom-flight">
+                <th colspan="3" data-i18n="components.perFlight">Costo per un volo €</th>
+                <td><strong>286,60</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </section>
 
       <hr class="divider" />
