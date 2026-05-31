@@ -292,18 +292,55 @@ img {
 
 .flight-frame {
   width: 100%;
-  height: min(72vh, 560px);
   border: 1px solid var(--line);
   margin: 1rem 0 2rem;
   background: #0f172a;
 }
 
-.flight-video {
+.flight-frame--3d {
+  height: min(92vh, 920px);
+}
+
+.flight-frame--chart {
+  height: 460px;
+  margin-bottom: 2.5rem;
+}
+
+.flight-charts-embed h4 {
+  margin: 2rem 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--red);
+  letter-spacing: 0.03em;
+}
+
+.flight-telemetry-gallery {
+  display: grid;
+  gap: 1.5rem;
+  margin: 1.25rem 0 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .flight-telemetry-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.flight-telemetry-shot {
+  margin: 0;
+}
+
+.flight-telemetry-shot img {
   width: 100%;
-  max-width: 48rem;
-  margin: 1rem 0 2rem;
+  height: auto;
   border: 1px solid var(--line);
-  background: #000;
+  display: block;
+}
+
+.flight-telemetry-shot figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
 .flight-stats {
@@ -749,8 +786,12 @@ td {
     border-color: var(--red-dim);
   }
 
-  .flight-frame {
-    height: min(55vh, 420px);
+  .flight-frame--3d {
+    height: min(70vh, 640px);
+  }
+
+  .flight-frame--chart {
+    height: 380px;
   }
 }
 

@@ -127,13 +127,26 @@
     "flight.p2":
       "Interactive model: pressure altitude on Z; X/Y from filtered horizontal IMU (dead reckoning). Animated CanSat cylinder along the path.",
     "flight.iframeTitle": "3D flight trajectory — dead reckoning",
-    "flight.h3video": "Telemetry recording",
-    "flight.p3": "Screen recording of the live telemetry feed during the flight.",
-    "flight.toggle": "Additional charts",
-    "flight.chart1": "02 — Vertical velocity (baro vs IMU)",
-    "flight.chart2": "03 — Vertical acceleration",
-    "flight.chart3": "04 — Pressure vs time",
-    "flight.chart4": "05 — Raw IMU (accel & gyro)",
+    "flight.h3telemetry": "Ground telemetry interface",
+    "flight.p3":
+      "During the flight the ground station receives packets over <strong>APC220 @ 9600 bps</strong> (serial port, e.g. COM6). Nano 33 BLE firmware sends pressure, temperature and IMU at ~2 Hz; the web app decodes frames, checks CRC, and updates the dashboard and CSV logger.",
+    "flight.p4":
+      "The <em>Telemetria CanSat Cratos</em> screen handles connection, RX/CRC counters, sensor selection, file logging and mission timer (T+). The <em>CRATOS CREW HUD</em> panel shows live barometry, altitude, attitude (artificial horizon), accelerometer, gyroscope, magnetometer and acoustic sensor.",
+    "flight.img1Alt": "Ground telemetry dashboard — serial link, CSV logger and mission timer",
+    "flight.img1Cap": "Ground station — serial link, CSV logger and T+",
+    "flight.img2Alt": "Flight HUD — baro, IMU and attitude in real time",
+    "flight.img2Cap": "Crew HUD — live flight telemetry",
+    "flight.h3charts": "Post-flight charts",
+    "flight.p5":
+      "Same data processed offline from <code>LOG-Telemetry.csv</code> (baro, velocity fusion, pressure, raw IMU).",
+    "flight.chart1": "Vertical velocity (baro vs IMU)",
+    "flight.chart2": "Vertical acceleration",
+    "flight.chart3": "Pressure vs time",
+    "flight.chart4": "Raw IMU (accel & gyro)",
+    "flight.chart1Title": "Vertical velocity",
+    "flight.chart2Title": "Vertical acceleration",
+    "flight.chart3Title": "Pressure vs time",
+    "flight.chart4Title": "Raw IMU",
     "flight.report":
       'Full methodology, maths and conclusions: <a href="assets/flight/REPORT.md">REPORT.md</a>',
     "team.title": "Team",
@@ -159,6 +172,7 @@
 
   const ATTR = {
     aria: "data-i18n-aria",
+    alt: "data-i18n-alt",
     title: "data-i18n-title",
     meta: "data-i18n-meta",
   };
@@ -177,6 +191,10 @@
     document.querySelectorAll(`[${ATTR.title}]`).forEach((el) => {
       const key = el.getAttribute(ATTR.title);
       if (key) store.set(key + ":title", el.getAttribute("title"));
+    });
+    document.querySelectorAll(`[${ATTR.alt}]`).forEach((el) => {
+      const key = el.getAttribute(ATTR.alt);
+      if (key) store.set(key + ":alt", el.getAttribute("alt"));
     });
   }
 
@@ -209,6 +227,13 @@
       if (!key) return;
       const it = store.get(key + ":title");
       el.setAttribute("title", lang === "en" && EN[key] ? EN[key] : it || el.getAttribute("title"));
+    });
+
+    document.querySelectorAll(`[${ATTR.alt}]`).forEach((el) => {
+      const key = el.getAttribute(ATTR.alt);
+      if (!key) return;
+      const it = store.get(key + ":alt");
+      el.setAttribute("alt", lang === "en" && EN[key] ? EN[key] : it || el.getAttribute("alt"));
     });
 
     const btn = document.getElementById("lang-toggle");

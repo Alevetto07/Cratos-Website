@@ -507,48 +507,89 @@
           reckoning). Cilindro CanSat animato lungo il percorso.
         </p>
         <iframe
-          class="flight-frame"
+          class="flight-frame flight-frame--3d"
           src="assets/flight/01_3d_trajectory.html"
           title="Traiettoria 3D volo Cratos"
           data-i18n-title="flight.iframeTitle"
           loading="lazy"
         ></iframe>
 
-        <h3 class="text-reveal" data-i18n="flight.h3video">Registrazione telemetria</h3>
+        <h3 class="text-reveal" data-i18n="flight.h3telemetry">Interfaccia telemetria a terra</h3>
         <p class="text-reveal" data-i18n="flight.p3">
-          Screen recording del feed telemetria in tempo reale durante il volo.
+          Durante il volo la ground station riceve i pacchetti via <strong>APC220 @ 9600 bps</strong>
+          (porta seriale, es. COM6). Il firmware sul Nano 33 BLE invia pressione, temperatura e IMU a
+          ~2 Hz; l’app web decodifica il frame, verifica il CRC e aggiorna dashboard e logger CSV.
         </p>
-        <video class="flight-video" controls preload="metadata" playsinline>
-          <source src="assets/flight/registrazione-volo.mp4" type="video/mp4" />
-        </video>
+        <p class="text-reveal" data-i18n="flight.p4">
+          La schermata <em>Telemetria CanSat Cratos</em> gestisce connessione, contatori RX/CRC,
+          selezione sensori, registrazione su file e timer missione (T+). Il pannello
+          <em>CRATOS CREW HUD</em> mostra in tempo reale barometria, quota, assetto (orizzonte
+          artificiale), accelerometro, giroscopio, magnetometro e sensore acustico.
+        </p>
+        <div class="flight-telemetry-gallery">
+          <figure class="flight-telemetry-shot">
+            <img
+              src="assets/flight/telemetry-ground-station.png"
+              alt="Dashboard telemetria a terra — connessione seriale, logger e timer missione"
+              data-i18n-alt="flight.img1Alt"
+              loading="lazy"
+              width="1920"
+              height="1080"
+            />
+            <figcaption data-i18n="flight.img1Cap">Ground station — link seriale, logger CSV e T+</figcaption>
+          </figure>
+          <figure class="flight-telemetry-shot">
+            <img
+              src="assets/flight/telemetry-hud.png"
+              alt="HUD volo — sensori barometrici, IMU e assetto in tempo reale"
+              data-i18n-alt="flight.img2Alt"
+              loading="lazy"
+              width="1920"
+              height="1080"
+            />
+            <figcaption data-i18n="flight.img2Cap">Crew HUD — telemetria di volo in tempo reale</figcaption>
+          </figure>
+        </div>
 
-        <details class="toggle">
-          <summary data-i18n="flight.toggle">Altri grafici</summary>
-          <div class="toggle__body">
-            <ul class="flight-charts">
-              <li>
-                <a href="assets/flight/02_vertical_velocity.html" target="_blank" rel="noopener"
-                  data-i18n="flight.chart1">02 — Velocità verticale (baro vs IMU)</a
-                >
-              </li>
-              <li>
-                <a href="assets/flight/03_vertical_acceleration.html" target="_blank" rel="noopener"
-                  data-i18n="flight.chart2">03 — Accelerazione verticale</a
-                >
-              </li>
-              <li>
-                <a href="assets/flight/04_pressure.html" target="_blank" rel="noopener"
-                  data-i18n="flight.chart3">04 — Pressione vs tempo</a
-                >
-              </li>
-              <li>
-                <a href="assets/flight/05_imu_raw.html" target="_blank" rel="noopener"
-                  data-i18n="flight.chart4">05 — IMU grezzo (accel e gyro)</a
-                >
-              </li>
-            </ul>
-          </div>
-        </details>
+        <h3 class="text-reveal" data-i18n="flight.h3charts">Grafici post-volo</h3>
+        <p class="text-reveal" data-i18n="flight.p5">
+          Stessi dati elaborati offline da <code>LOG-Telemetry.csv</code> (baro, fusione velocità,
+          pressione, IMU grezzo).
+        </p>
+        <div class="flight-charts-embed">
+          <h4 class="text-reveal" data-i18n="flight.chart1">Velocità verticale (baro vs IMU)</h4>
+          <iframe
+            class="flight-frame flight-frame--chart"
+            src="assets/flight/02_vertical_velocity.html"
+            title="Velocità verticale"
+            data-i18n-title="flight.chart1Title"
+            loading="lazy"
+          ></iframe>
+          <h4 class="text-reveal" data-i18n="flight.chart2">Accelerazione verticale</h4>
+          <iframe
+            class="flight-frame flight-frame--chart"
+            src="assets/flight/03_vertical_acceleration.html"
+            title="Accelerazione verticale"
+            data-i18n-title="flight.chart2Title"
+            loading="lazy"
+          ></iframe>
+          <h4 class="text-reveal" data-i18n="flight.chart3">Pressione vs tempo</h4>
+          <iframe
+            class="flight-frame flight-frame--chart"
+            src="assets/flight/04_pressure.html"
+            title="Pressione vs tempo"
+            data-i18n-title="flight.chart3Title"
+            loading="lazy"
+          ></iframe>
+          <h4 class="text-reveal" data-i18n="flight.chart4">IMU grezzo (accel e gyro)</h4>
+          <iframe
+            class="flight-frame flight-frame--chart"
+            src="assets/flight/05_imu_raw.html"
+            title="IMU grezzo"
+            data-i18n-title="flight.chart4Title"
+            loading="lazy"
+          ></iframe>
+        </div>
 
         <p class="text-reveal flight-report-link" data-i18n="flight.report">
           Metodologia, matematica e conclusioni complete:
