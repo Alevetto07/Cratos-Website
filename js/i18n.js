@@ -100,8 +100,6 @@
     "pcb.toggle5": "PCB4 — power distribution",
     "pcb.p5":
       "DC rails for analog chain, Teensy, Arduino and peripherals. TEL5-1211 module; master switch on the base.",
-    "pcb.placeholder":
-      "<strong>Coming soon:</strong> bench characterization, efficiency curves and integration notes for PCB4.",
     "components.title": "Bill of materials (BOM)",
     "components.p1": "Purchased parts for the project — unit prices and budget totals (CDR).",
     "components.th1": "Function",
@@ -145,7 +143,7 @@
     "flight.stat.rmse": "Velocity fusion RMSE",
     "flight.h3trajectory": "3D trajectory",
     "flight.p2":
-      "Interactive model: pressure altitude on Z; X/Y from filtered horizontal IMU (dead reckoning). On load: full trajectory at end of flight; press <strong>▶ Play</strong> in the chart to replay from the start.",
+      "Interactive model: pressure altitude on Z; X/Y from filtered horizontal IMU (dead reckoning). On load: trajectory at end of flight; <strong>▶ Play</strong> replays the flight and stops at the end without returning to the start.",
     "flight.iframeTitle": "3D flight trajectory — dead reckoning",
     "flight.h3telemetry": "Ground telemetry interface",
     "flight.p3":
