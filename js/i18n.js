@@ -43,12 +43,21 @@
     "primary.toggle": "Hardware images — primary mission",
     "secondary.title": "Secondary mission",
     "secondary.p1":
-      "Acquisition of ambient EM signals in <strong>10 kHz – 100 kHz</strong> (below antenna resonance ~120 kHz). Target: phenomena such as <em>whistlers</em>. Weak signal → analog chain on 4 PCBs → Teensy 4.1 ADC → microSD → GNU Octave.",
+      "Acquisition of the <strong>radio spectrum</strong> in <strong>10 kHz – 100 kHz</strong> (below antenna resonance ~120 kHz). Weak signal → analog chain on 4 PCBs → Teensy 4.1 ADC → microSD → FFT analysis in GNU Octave.",
+    "secondary.h3science": "Science goals",
+    "secondary.p2": "Capture and classify in-flight electromagnetic emissions, focusing on:",
+    "secondary.sci1":
+      "<strong>Whistlers</strong> — audio-frequency EM waves from discharges in Earth’s atmosphere",
+    "secondary.sci2":
+      "<strong>Radio bursts</strong> — impulsive transients in the time/frequency domain",
+    "secondary.sci3":
+      "<strong>Anthropogenic emissions</strong> — human-made RF in the radio spectrum, compared against the natural background",
     "secondary.h3chain": "Signal path",
     "secondary.chain":
       "<strong>Deployed coil</strong> → <strong>PCB1</strong> → <strong>PCB2</strong> → <strong>PCB3</strong> → protection → <strong>Teensy ADC</strong> → <strong>microSD</strong>",
     "secondary.h3ant": "Antenna",
-    "secondary.li1": "Solenoid: <strong>200 m</strong> AWG30, <strong>100 turns</strong>",
+    "secondary.li1":
+      "Solenoid coil: <strong>200 m</strong> of <strong>AWG30</strong> wire wrapped <strong>100 times</strong> around the CanSat body",
     "secondary.li2": "Lower bay; in-flight deploy by servo at target altitude",
     "secondary.li3": "Binary SD logging for throughput and time integrity",
     "secondary.dt1": "Acquisition",
@@ -130,7 +139,7 @@
     "flight.stat.rmse": "Velocity fusion RMSE",
     "flight.h3trajectory": "3D trajectory",
     "flight.p2":
-      "Interactive model: pressure altitude on Z; X/Y from filtered horizontal IMU (dead reckoning). Animation starts at <strong>t = 89 s</strong> (liftoff from pad); the first 89 s the CanSat is still on the ground.",
+      "Interactive model: pressure altitude on Z; X/Y from filtered horizontal IMU (dead reckoning). Animation starts at <strong>t = 80 s</strong> (liftoff from pad); the first 80 s the CanSat is still on the ground.",
     "flight.iframeTitle": "3D flight trajectory — dead reckoning",
     "flight.h3telemetry": "Ground telemetry interface",
     "flight.p3":

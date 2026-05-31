@@ -8,7 +8,7 @@
       content="Team Cratos — CanSat ESERO Italia. Telemetria pressione e temperatura, missione VLF con quattro PCB custom."
       data-i18n-meta="meta.description"
     />
-    <title>Cratos — CanSat ESERO</title>
+    <title>Cratos CanSat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -53,7 +53,7 @@
             height="320"
           />
           <div class="intro__titles">
-            <h1>CanSat · ESERO Italia</h1>
+            <h1>Cratos CanSat</h1>
             <p class="meta text-reveal">
               <span data-i18n="meta.team">Team Cratos</span>
               <span data-i18n="meta.school">Liceo Scientifico Enrico Fermi · Padova</span>
@@ -122,11 +122,28 @@
       <section class="section-block reveal" id="secondaria">
         <h2 class="text-reveal" data-i18n="secondary.title">Missione secondaria</h2>
         <p class="text-reveal" data-i18n="secondary.p1">
-          Acquisizione di segnali elettromagnetici ambientali nella banda
-          <strong>10 kHz – 100 kHz</strong> (sotto la risonanza dell’antenna ~120 kHz). Obiettivo:
-          fenomeni come i <em>whistlers</em>. Segnale debole → catena analogica su 4 PCB → ADC
-          Teensy 4.1 → microSD → GNU Octave.
+          Acquisizione dello <strong>spettro radio</strong> nella banda
+          <strong>10 kHz – 100 kHz</strong> (sotto la risonanza dell’antenna ~120 kHz). Segnale
+          debole → catena analogica su 4 PCB → ADC Teensy 4.1 → microSD → analisi FFT in GNU
+          Octave.
         </p>
+        <h3 class="text-reveal" data-i18n="secondary.h3science">Obiettivi scientifici</h3>
+        <p class="text-reveal" data-i18n="secondary.p2">
+          Cattura e classificazione di emissioni elettromagnetiche in volo, con focus su:
+        </p>
+        <ul>
+          <li class="text-reveal" data-i18n="secondary.sci1">
+            <strong>Whistler</strong> — onde elettromagnetiche audiofrequenza generate da scariche
+            nell’atmosfera terrestre
+          </li>
+          <li class="text-reveal" data-i18n="secondary.sci2">
+            <strong>Burst radio</strong> — impulsi e transitori nel dominio tempo/frequenza
+          </li>
+          <li class="text-reveal" data-i18n="secondary.sci3">
+            <strong>Emissioni antropogeniche</strong> — contributo umano allo spettro radio (RF
+            artificiale) da confrontare con il fondo naturale
+          </li>
+        </ul>
         <h3 class="text-reveal" data-i18n="secondary.h3chain">Catena segnale</h3>
         <p class="chain text-reveal" data-i18n="secondary.chain">
           <strong>Antenna deployata</strong> → <strong>PCB1</strong> → <strong>PCB2</strong> →
@@ -135,7 +152,8 @@
         <h3 class="text-reveal" data-i18n="secondary.h3ant">Antenna</h3>
         <ul>
           <li class="text-reveal" data-i18n="secondary.li1">
-            Solenoide: <strong>200 m</strong> AWG30, <strong>100 avvolgimenti</strong>
+            Solenoide: <strong>200 m</strong> di filo <strong>AWG30</strong> avvolto
+            <strong>100 volte</strong> intorno al corpo del CanSat
           </li>
           <li class="text-reveal" data-i18n="secondary.li2">Vano inferiore; deploy in volo con servomotore a quota target</li>
           <li class="text-reveal" data-i18n="secondary.li3">Logging binario su SD per throughput e integrità temporale</li>
@@ -538,8 +556,8 @@
         <h3 class="text-reveal" data-i18n="flight.h3trajectory">Traiettoria 3D</h3>
         <p class="text-reveal" data-i18n="flight.p2">
           Modello interattivo: quota Z da pressione; X/Y da IMU orizzontale filtrato (dead
-          reckoning). L’animazione parte da <strong>t = 89 s</strong> (decollo dal pad); i primi
-          89 s il CanSat è ancora a terra.
+          reckoning). L’animazione parte da <strong>t = 80 s</strong> (decollo dal pad); i primi
+          80 s il CanSat è ancora a terra.
         </p>
         <iframe
           class="flight-frame flight-frame--3d"
