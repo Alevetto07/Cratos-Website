@@ -4,8 +4,6 @@ import plotly.graph_objects as go
 from pathlib import Path
 
 MAG_ERR_UT = 0.014
-AXIS_LINE = dict(width=1, color="rgba(148, 163, 184, 0.35)")
-MAIN_LINE = dict(color="#e2e8f0", width=2.5)
 
 ROOT = Path(__file__).resolve().parents[1]
 df = pd.read_csv(ROOT / "LOG-Telemetry.csv")
@@ -19,36 +17,13 @@ for col, key, color in [
     ("mag_y_uT", "B_y", "rgba(74, 222, 128, 0.45)"),
     ("mag_z_uT", "B_z", "rgba(96, 165, 250, 0.45)"),
 ]:
-    y = df[col]
     fig.add_trace(
         go.Scatter(
             x=df["t_s"],
-            y=y + MAG_ERR_UT,
-            mode="lines",
-            line=dict(width=0),
-            showlegend=False,
-            hoverinfo="skip",
-        )
-    )
-    fig.add_trace(
-        go.Scatter(
-            x=df["t_s"],
-            y=y - MAG_ERR_UT,
-            mode="lines",
-            line=dict(width=0),
-            fill="tonexty",
-            fillcolor=color.replace("0.45", "0.12"),
-            showlegend=False,
-            hoverinfo="skip",
-        )
-    )
-    fig.add_trace(
-        go.Scatter(
-            x=df["t_s"],
-            y=y,
+            y=df[col],
             mode="lines",
             name=f"{key} ({err_label})",
-            line=dict(width=AXIS_LINE["width"], color=color),
+            line=dict(width=1, color=color),
         )
     )
 
@@ -58,7 +33,7 @@ fig.add_trace(
         y=b,
         mode="lines",
         name="|B|",
-        line=MAIN_LINE,
+        line=dict(color="#e2e8f0", width=2.5),
     )
 )
 fig.update_layout(
