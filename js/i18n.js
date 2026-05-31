@@ -125,7 +125,7 @@
     "flight.stat.rmse": "Velocity fusion RMSE",
     "flight.h3trajectory": "3D trajectory",
     "flight.p2":
-      "Interactive model: pressure altitude on Z; X/Y from filtered horizontal IMU (dead reckoning). Animated CanSat cylinder along the path.",
+      "Interactive model: pressure altitude on Z; X/Y from filtered horizontal IMU (dead reckoning). Animation starts at <strong>t = 89 s</strong> (liftoff from pad); the first 89 s the CanSat is still on the ground.",
     "flight.iframeTitle": "3D flight trajectory — dead reckoning",
     "flight.h3telemetry": "Ground telemetry interface",
     "flight.p3":
