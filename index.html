@@ -81,7 +81,7 @@
         </p>
         <h3 class="text-reveal" data-i18n="primary.h3chain">Catena dati</h3>
         <p class="chain text-reveal" data-i18n="primary.chain">
-          <strong>Sensore integrato</strong> → <strong>Arduino Nano 33 BLE Sense Rev2</strong> →
+          <strong>Sensore integrato</strong> → <strong>Arduino Nano 33 BLE</strong> →
           <strong>APC220</strong> → <strong>Ricevitore a terra</strong> → GNU Octave
         </p>
         <ul>
@@ -91,7 +91,7 @@
         </ul>
         <dl class="kv">
           <dt class="text-reveal" data-i18n="primary.dt1">MCU / sensori</dt>
-          <dd class="text-reveal" data-i18n="primary.dd1">Arduino Nano 33 BLE Sense Rev2</dd>
+          <dd class="text-reveal" data-i18n="primary.dd1">Arduino Nano 33 BLE</dd>
           <dt class="text-reveal" data-i18n="primary.dt2">Telemetria</dt>
           <dd class="text-reveal" data-i18n="primary.dd2">Modulo radio APC220</dd>
           <dt class="text-reveal" data-i18n="primary.dt3">Vincolo</dt>
@@ -104,62 +104,15 @@
             <figure class="figure">
               <img
                 src="assets/images/arduino-nano-ble.png"
-                alt="Arduino Nano 33 BLE Sense Rev2"
-                data-i18n-alt="primary.fig1alt"
+                alt="Arduino Nano 33 BLE"
                 loading="lazy"
               />
-              <span class="fig-label" data-i18n="primary.fig1"
-                ><strong>Fig. 1</strong> Arduino Nano 33 BLE Sense Rev2</span
-              >
+              <span class="fig-label"><strong>Fig. 1</strong> Arduino Nano 33 BLE</span>
             </figure>
             <figure class="figure">
               <img src="assets/images/apc220.png" alt="Modulo APC220" loading="lazy" />
               <span class="fig-label"><strong>Fig. 2</strong> APC220 · downlink</span>
             </figure>
-          </div>
-        </details>
-
-        <details class="toggle">
-          <summary data-i18n="primary.rev2toggle">
-            Nano 33 BLE Sense Rev2 — errore librerie (Rev1 vs Rev2)
-          </summary>
-          <div class="toggle__body">
-            <p class="text-reveal" data-i18n="primary.rev2p">
-              La <strong>Rev2</strong> non è intercambiabile con la Rev1: IMU e temperatura/umidità
-              usano chip diversi. Esempi e librerie della Rev1 (
-              <code>Arduino_LSM9DS1</code>, <code>ArduinoHTS221</code>) su una scheda Rev2 producono
-              errori di inizializzazione o dati assenti (es. IMU a ~0,39&nbsp;Hz senza campioni
-              utili). Documentazione ufficiale:
-              <a
-                href="https://support.arduino.cc/hc/en-us/articles/11729186296476"
-                target="_blank"
-                rel="noopener noreferrer"
-                >sensor libraries for Rev2</a
-              >.
-            </p>
-            <ul>
-              <li class="text-reveal" data-i18n="primary.rev2li1">
-                <strong>IMU Rev2:</strong> BMI270 + BMM150 → libreria
-                <code>Arduino_BMI270_BMM150</code> (non <code>Arduino_LSM9DS1</code>)
-              </li>
-              <li class="text-reveal" data-i18n="primary.rev2li2">
-                <strong>T / RH Rev2:</strong> HS3003 → <code>Arduino_HS300x</code> (non
-                <code>ArduinoHTS221</code>)
-              </li>
-              <li class="text-reveal" data-i18n="primary.rev2li3">
-                <strong>Pressione:</strong> LPS22HB invariata → <code>Arduino_LPS22HB</code>
-              </li>
-              <li class="text-reveal" data-i18n="primary.rev2li4">
-                <strong>USB / upload:</strong> sketch errato può bloccare la porta seriale; recovery
-                con doppio click su RESET (bootloader, LED arancione pulsante) —
-                <a
-                  href="https://forum.arduino.cc/t/nano-33-ble-sense-rev2-sensors-not-working/1401645"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >discussione forum</a
-                >
-              </li>
-            </ul>
           </div>
         </details>
       </section>
@@ -458,8 +411,10 @@
                 <td>57,46</td>
               </tr>
               <tr>
-                <td data-i18n="components.r2">MCU missione primaria</td>
-                <td>Arduino Nano 33 BLE Sense Rev2</td>
+                <td data-i18n="components.r2">
+                  MCU missione primaria (sensori temp. e pressione integrati)
+                </td>
+                <td>Arduino Nano BLE 33</td>
                 <td>1</td>
                 <td>23,91</td>
               </tr>
@@ -626,8 +581,7 @@
         <h3 class="text-reveal" data-i18n="flight.h3telemetry">Interfaccia telemetria a terra</h3>
         <p class="text-reveal" data-i18n="flight.p3">
           Durante il volo la ground station riceve i pacchetti via <strong>APC220 @ 9600 bps</strong>
-          (porta seriale, es. COM6). Il firmware sul Nano 33 BLE Sense Rev2 invia pressione,
-          temperatura e IMU a
+          (porta seriale, es. COM6). Il firmware sul Nano 33 BLE invia pressione, temperatura e IMU a
           ~2 Hz; l’app web decodifica il frame, verifica il CRC e aggiorna dashboard e logger CSV.
         </p>
         <p class="text-reveal" data-i18n="flight.p4">
@@ -666,11 +620,6 @@
           Stessi dati elaborati offline da <code>LOG-Telemetry.csv</code> (baro, fusione velocità,
           pressione, temperatura, IMU grezzo).
         </p>
-        <p class="text-reveal flight-note" data-i18n="flight.rev2note">
-          I grafici IMU e la fusione usano telemetria registrata dopo aver corretto il firmware per
-          la <strong>Arduino Nano 33 BLE Sense Rev2</strong> (librerie
-          <code>Arduino_BMI270_BMM150</code> / <code>Arduino_HS300x</code>, non le API Rev1).
-        </p>
         <div class="flight-charts-embed">
           <h4 class="text-reveal" data-i18n="flight.chart1">Velocità verticale (baro vs IMU)</h4>
           <iframe
@@ -697,10 +646,6 @@
             loading="lazy"
           ></iframe>
           <h4 class="text-reveal" data-i18n="flight.chart4">IMU grezzo (accel e gyro)</h4>
-          <p class="text-reveal flight-note" data-i18n="flight.imuNote">
-            Con librerie Rev1 su Rev2 l’IMU non inizializza correttamente; qui i dati sono coerenti
-            solo dopo il passaggio alle librerie Rev2 (vedi sezione missione primaria).
-          </p>
           <iframe
             class="flight-frame flight-frame--chart"
             src="assets/flight/05_imu_raw.html"
@@ -738,9 +683,7 @@
 
           <h4 class="text-reveal" data-i18n="flight.method.h4math">Matematica</h4>
 
-          <p class="text-reveal" data-i18n="flight.method.baroTitle">
-            <strong>Quota barometrica</strong> (come sul Nano 33 BLE Sense Rev2, LPS22HB):
-          </p>
+          <p class="text-reveal" data-i18n="flight.method.baroTitle"><strong>Quota barometrica</strong> (come sul Nano 33 BLE):</p>
           <p class="formula text-reveal" data-i18n="flight.method.baroFormula">
             h = 44330 × (1 − (P/P<sub>ref</sub>)<sup>0,190294957</sup>)
           </p>
